@@ -1,0 +1,17 @@
+[Unit]
+Description=Telegram Schedule Bot
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/root/schedulebot
+ExecStart=/root/schedulebot/venv/bin/python3 /root/schedulebot/main.py
+Restart=always
+RestartSec=5
+StandardOutput=append:/var/log/schedule_bot.log
+StandardError=append:/var/log/schedule_bot.log
+Environment=TOKEN=
+Environment=ADMIN_ID=
+
+[Install]
+WantedBy=multi-user.target

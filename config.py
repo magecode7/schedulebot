@@ -1,0 +1,4 @@
+TOKEN = ""
+GROUP_ID = 0
+ADMIN_ID = 0
+VZVOD_ID = 124
