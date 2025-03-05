@@ -10,8 +10,6 @@ Restart=always
 RestartSec=5
 StandardOutput=append:/var/log/schedule_bot.log
 StandardError=append:/var/log/schedule_bot.log
-Environment=TOKEN=
-Environment=ADMIN_ID=
 
 [Install]
 WantedBy=multi-user.target

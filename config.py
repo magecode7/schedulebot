@@ -1,4 +1,4 @@
-TOKEN = ""
-GROUP_ID = 0
-ADMIN_ID = 0
-VZVOD_ID = 124
+import json
+
+with open("config.json", "r") as f:
+    config = json.load(f)
