@@ -14,6 +14,7 @@ commands = [
     types.BotCommand(command="group", description="Текущая группа"),
     types.BotCommand(command="today", description="Расписание на сегодня"),
     types.BotCommand(command="tommorow", description="Расписание на завтра"),
+    types.BotCommand(command="week", description="Расписание на неделю"),
 ]
 
 # Настройка логирования
@@ -210,7 +211,7 @@ async def send_week_schedule(message: types.Message):
 async def send_help(message: types.Message):
     await main_bot.send_message(
         message.chat.id,
-        "Список команд:\n/start - начало работы с ботом\n/group - установка группы\n/today - расписание на сегодня\n/tommorow - расписание на завтра\n/date - расписание на указанную дату",
+        "Список команд:\n/start - начало работы с ботом\n/group - установка группы\n/today - расписание на сегодня\n/tommorow - расписание на завтра\n/date - расписание на указанную дату\n/week - расписание на неделю\n/groups - список групп\n/help - помощь",
     )
 
 
