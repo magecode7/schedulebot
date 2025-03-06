@@ -162,7 +162,7 @@ async def send_day_schedule(message: types.Message):
 # Обработчик команды /now
 @dp.message(Command("now"))
 async def send_now_schedule(message: types.Message):
-    now = datetime.date.today()
+    now = datetime.datetime.now()
     await main_bot.send_message(message.chat.id, now.strftime("%d.%m.%Y %H:%M"))
 
 
@@ -178,6 +178,31 @@ async def send_groups(message: types.Message):
             await main_bot.send_message(message.chat.id, text[i : i + 4096])
     else:
         await main_bot.send_message(message.chat.id, text)
+
+
+# Обработчик команды /week
+@dp.message(Command("week"))
+async def send_week_schedule(message: types.Message):
+    week = datetime.date.today()
+    group_id = group_manager.get_group_id(str(message.chat.id))
+    month = week.month
+    year = week.year
+
+    if not group_id:
+        await main_bot.send_message(
+            message.chat.id,
+            "Не указана группа. Используй команду /group [название группы]",
+        )
+        return
+
+    schedule = parser.get_schedule(group_id, month, year)
+    if schedule:
+        text = builder.get_week_lessons_text(schedule, week)
+        await main_bot.send_message(message.chat.id, text)
+    else:
+        await main_bot.send_message(
+            message.chat.id, "Не удалось получить расписание. Попробуйте позже."
+        )
 
 
 # Обработчик команды /help
